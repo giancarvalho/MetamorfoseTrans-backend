@@ -9,6 +9,10 @@
     "sourceType": "module"
   },
   "rules": {
-    "import/extensions": ["error", { "js": "ignorePackages" }]
+    "import/extensions": ["error", { "js": "ignorePackages" }],
+    "object-curly-newline": "off",
+    "consistent-return": "off",
+    "linebreak-style": 0,
+    "import/prefer-default-export": "off"
   }
 }
