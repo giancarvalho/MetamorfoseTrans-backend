@@ -12,6 +12,12 @@ async function validateNewUser(userData) {
       return validation;
     }
 
+    if (!userData.typeId) {
+      validation.isInvalid = true;
+      validation.errorCode = 400;
+      return validation;
+    }
+
     const isUser = await userRepository.find(userData.email);
 
     if (isUser.rowCount > 0) {

@@ -5,6 +5,7 @@ function createFakeUser() {
     name: faker.name.findName(),
     password: faker.internet.password(),
     email: faker.internet.email(),
+    type: faker.random.arrayElement(['trans', 'professional']),
   };
 
   return fakeUser;

@@ -3,13 +3,15 @@ import * as userRepository from '../repositories/user.repository.js';
 import * as userValidation from '../validations/user.validation.js';
 
 async function create(user) {
-  const validation = await userValidation.validateNewUser(user);
+  const typeId = await userRepository.findType(user.type);
+  const userData = { ...user, typeId };
+  const validation = await userValidation.validateNewUser(userData);
 
   if (validation.isInvalid) {
     return validation;
   }
 
-  const { name, password, email, cpf } = user;
+  const { name, password, email, cpf } = userData;
 
   const hashedPassword = bcrypt.hashSync(password, 10);
 
@@ -18,6 +20,7 @@ async function create(user) {
     hashedPassword,
     email,
     cpf,
+    typeId,
   });
 
   return { id: result };
