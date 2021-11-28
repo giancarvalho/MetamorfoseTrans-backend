@@ -18,6 +18,7 @@ CREATE TABLE "doctors_profiles" (
 	"name" varchar(255) NOT NULL,
 	"speciality_id" integer NOT NULL,
 	"doctor_code" varchar(255),
+	"subtitle" varchar(255),
 	CONSTRAINT "doctors_profiles_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -48,12 +49,14 @@ CREATE TABLE "specialities" (
 CREATE TABLE "reviews" (
 	"id" serial NOT NULL,
 	"user_id" integer NOT NULL,
-	"comment" integer,
+	"text" integer,
 	"rating" integer,
 	CONSTRAINT "reviews_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
+
+
 
 ALTER TABLE "users" ADD CONSTRAINT "users_fk0" FOREIGN KEY ("user_type_id") REFERENCES "user_type"("id");
 
@@ -61,6 +64,7 @@ ALTER TABLE "doctors_profiles" ADD CONSTRAINT "doctors_profiles_fk0" FOREIGN KEY
 ALTER TABLE "doctors_profiles" ADD CONSTRAINT "doctors_profiles_fk1" FOREIGN KEY ("speciality_id") REFERENCES "specialities"("id");
 
 ALTER TABLE "reviews" ADD CONSTRAINT "reviews_fk0" FOREIGN KEY ("user_id") REFERENCES "users"("id");
+
 
 INSERT INTO user_type (name) VALUES ('trans'), ('professional');
 
