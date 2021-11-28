@@ -15,30 +15,19 @@ async function signUp(req, res) {
 }
 async function signIn(req, res) {
   const { email, password } = req.body;
-  try {
-    const signInEntries = await userService.validateSignIn({ email, password });
-    if (signInEntries?.isInvalid) return res.sendStatus(signInEntries.errorCode);
-  } catch (error) {
-    console.log('Error at signIn check entries', error.message);
-    return res.sendStatus(500);
-  }
-  let userData;
-  try {
-    // validateUserCredentials returns userData or false
-    const userCredentialsIsCorrect = await userService.validateUserCredentials({
-      email,
-      password,
-    });
-    if (!userCredentialsIsCorrect) {
-      console.log(userCredentialsIsCorrect);
-      return res.sendStatus(401);}
-    userData = userCredentialsIsCorrect;
-  } catch (error) {
-    console.log('Error at signIn check credentials', error.message);
-    return res.sendStatus(500);
-  }
+
+  const signInEntries = await userService.validateSignIn({ email, password });
+  if (signInEntries?.isInvalid) return res.sendStatus(signInEntries.errorCode);
+
+  // validateUserCredentials returns userData or false
+  const userCredentialsIsCorrect = await userService.validateUserCredentials({
+    email,
+    password,
+  });
+  if (!userCredentialsIsCorrect) return res.sendStatus(401);
+  const userData = userCredentialsIsCorrect;
   const token = await userService.createSession(userData.id);
-  
+
   delete userData.password;
   res.status(200).send({ token, userData });
 }

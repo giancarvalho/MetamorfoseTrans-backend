@@ -33,23 +33,19 @@ async function validateSignIn(user) {
     return validation;
   }
 }
-async function validateUserCredentials({email,password}) {
-  let user;
-  try {
-    user = await userRepository.find(email);
-    
-  } catch(error) {
-    console.log(error.message);
-    return null;
-  }
-  if(bcrypt.compareSync(password, user.password) && !!user) return user;
+async function validateUserCredentials({ email, password }) {
+  const user = await userRepository.find(email);
+
+  if (bcrypt.compareSync(password, user.password) && !!user) return user;
   return false;
 }
-async function createSession(userId){
+
+async function createSession(userId) {
   const previousSession = await userRepository.findSessionByUserId(userId);
-    if (previousSession) await userRepository.deleteSessionById(previousSession.id)
-    const token = await userRepository.createSession(userId);
-    return token;
+  if (previousSession)
+    await userRepository.deleteSessionById(previousSession.id);
+  const token = await userRepository.createSession(userId);
+  return token;
 }
 
-export { create, validateSignIn, validateUserCredentials,createSession };
+export { create, validateSignIn, validateUserCredentials, createSession };

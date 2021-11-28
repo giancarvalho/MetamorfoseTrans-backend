@@ -12,7 +12,6 @@ async function validateSignIn({ email, password }) {
       validation.errorCode = 400;
       return validation;
     }
-
     return validation;
   } catch (error) {
     validation.isInvalid = true;
