@@ -1,6 +1,6 @@
-import '../src/setup';
+import '../../src/setup.js';
 import supertest from 'supertest';
-import app from '../src/app';
+import app from '../../src/app';
 
 describe('GET /health', () => {
   it('Should return 200 if server is running smoothly', async () => {
