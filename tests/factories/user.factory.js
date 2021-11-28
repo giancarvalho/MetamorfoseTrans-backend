@@ -10,5 +10,13 @@ function createFakeUser() {
 
   return fakeUser;
 }
+function createEmailAndPassword(){
+  const fakeUser = {
+    password: faker.internet.password(),
+    email: faker.internet.email(),
+  };
 
-export { createFakeUser };
+  return fakeUser;
+}
+
+export { createFakeUser,createEmailAndPassword };

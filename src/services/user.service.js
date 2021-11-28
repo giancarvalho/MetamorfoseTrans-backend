@@ -26,4 +26,26 @@ async function create(user) {
   return { id: result };
 }
 
-export { create };
+async function validateSignIn(user) {
+  const validation = await userValidation.validateSignIn(user);
+
+  if (validation.isInvalid) {
+    return validation;
+  }
+}
+async function validateUserCredentials({ email, password }) {
+  const user = await userRepository.find(email);
+
+  if (bcrypt.compareSync(password, user.password) && !!user) return user;
+  return false;
+}
+
+async function createSession(userId) {
+  const previousSession = await userRepository.findSessionByUserId(userId);
+  if (previousSession)
+    await userRepository.deleteSessionById(previousSession.id);
+  const token = await userRepository.createSession(userId);
+  return token;
+}
+
+export { create, validateSignIn, validateUserCredentials, createSession };
