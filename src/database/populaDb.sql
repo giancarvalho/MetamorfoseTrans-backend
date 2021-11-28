@@ -1,0 +1,2 @@
+INSERT INTO user_type (name) VALUES ('trans'), ('professional');
+INSERT INTO users (name, email, password, user_type_id) VALUES ('Ariel', 'a@a.com', '$2b$10$0AOUA6/Ii93Wtmcfd2QcUuhVOxpFq/GytwxEzTgY9Txe9JST/QFv.', '1');
