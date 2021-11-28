@@ -2,8 +2,8 @@ import * as userRepository from '../repositories/user.repository.js';
 import newUserSchema from './schemas/newUser.schema.js';
 
 async function validateNewUser(userData) {
-  const joiValidation = newUserSchema.validate(userData);
   const validation = { isInvalid: false, errorCode: null };
+  const joiValidation = newUserSchema.validate(userData);
 
   try {
     if (joiValidation.error) {
@@ -16,7 +16,7 @@ async function validateNewUser(userData) {
 
     if (isUser.rowCount > 0) {
       validation.isInvalid = true;
-      validation.errorCode = 404;
+      validation.errorCode = 409;
 
       return validation;
     }

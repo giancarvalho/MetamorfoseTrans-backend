@@ -6,7 +6,7 @@ async function signUp(req, res) {
   try {
     const result = await userService.create(userData);
 
-    if (!result) return res.sendStatus(400);
+    if (result.isInvalid) return res.sendStatus(result.errorCode);
 
     return res.sendStatus(201);
   } catch (error) {
