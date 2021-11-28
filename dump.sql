@@ -21,13 +21,7 @@ CREATE TABLE "doctors_profiles" (
 	"speciality_id" integer NOT NULL,
 	"subtitle" varchar(255),
 	"doctor_code" varchar(255),
-	"work_days" varchar(255) NOT NULL,
-	"work_hours" varchar(255) NOT NULL,
-	"address" varbit NOT NULL,
-	"number" integer NOT NULL,
-	"address_line_two" integer,
-	"city_id" integer NOT NULL,
-	"state_id" integer NOT NULL,
+	"subtitle" varchar(255),
 	CONSTRAINT "doctors_profiles_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -69,6 +63,9 @@ CREATE TABLE "reviews" (
 
 
 
+ALTER TABLE "users" ADD CONSTRAINT "users_fk0" FOREIGN KEY ("user_type_id") REFERENCES "user_type"("id");
+
+
 CREATE TABLE "sessions" (
 	"id" serial NOT NULL,
 	"token" varchar(255) NOT NULL,
@@ -88,6 +85,8 @@ CREATE TABLE "cities" (
   OIDS=FALSE
 );
 
+
+INSERT INTO user_type (name) VALUES ('trans'), ('professional');
 
 
 CREATE TABLE "states" (
