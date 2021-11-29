@@ -21,7 +21,13 @@ CREATE TABLE "doctors_profiles" (
 	"speciality_id" integer NOT NULL,
 	"subtitle" varchar(255),
 	"doctor_code" varchar(255),
-	"subtitle" varchar(255),
+	"work_days" varchar(255) NOT NULL,
+	"work_hours" varchar(255) NOT NULL,
+	"address" varbit NOT NULL,
+	"number" integer NOT NULL,
+	"address_line_two" integer,
+	"city_id" integer NOT NULL,
+	"state_id" integer NOT NULL,
 	CONSTRAINT "doctors_profiles_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -63,9 +69,6 @@ CREATE TABLE "reviews" (
 
 
 
-ALTER TABLE "users" ADD CONSTRAINT "users_fk0" FOREIGN KEY ("user_type_id") REFERENCES "user_type"("id");
-
-
 CREATE TABLE "sessions" (
 	"id" serial NOT NULL,
 	"token" varchar(255) NOT NULL,
@@ -75,8 +78,6 @@ CREATE TABLE "sessions" (
   OIDS=FALSE
 );
 
-
-
 CREATE TABLE "cities" (
 	"id" serial NOT NULL,
 	"name" varchar(255) NOT NULL,
@@ -84,10 +85,6 @@ CREATE TABLE "cities" (
 ) WITH (
   OIDS=FALSE
 );
-
-
-INSERT INTO user_type (name) VALUES ('trans'), ('professional');
-
 
 CREATE TABLE "states" (
 	"id" serial NOT NULL,
@@ -97,8 +94,6 @@ CREATE TABLE "states" (
   OIDS=FALSE
 );
 
-
-
 ALTER TABLE "users" ADD CONSTRAINT "users_fk0" FOREIGN KEY ("user_type_id") REFERENCES "user_type"("id");
 
 ALTER TABLE "doctors_profiles" ADD CONSTRAINT "doctors_profiles_fk0" FOREIGN KEY ("user_id") REFERENCES "users"("id");
@@ -106,8 +101,14 @@ ALTER TABLE "doctors_profiles" ADD CONSTRAINT "doctors_profiles_fk1" FOREIGN KEY
 ALTER TABLE "doctors_profiles" ADD CONSTRAINT "doctors_profiles_fk2" FOREIGN KEY ("city_id") REFERENCES "cities"("id");
 ALTER TABLE "doctors_profiles" ADD CONSTRAINT "doctors_profiles_fk3" FOREIGN KEY ("state_id") REFERENCES "states"("id");
 
-
-
 ALTER TABLE "reviews" ADD CONSTRAINT "reviews_fk0" FOREIGN KEY ("user_id") REFERENCES "users"("id");
 ALTER TABLE "reviews" ADD CONSTRAINT "reviews_fk1" FOREIGN KEY ("doctors_profile_id") REFERENCES "doctors_profiles"("id");
+
 ALTER TABLE "sessions" ADD CONSTRAINT "sessions_fk0" FOREIGN KEY ("user_id") REFERENCES "users"("id");
+
+INSERT INTO user_type (name) VALUES ('trans'), ('professional');
+
+
+
+
+
