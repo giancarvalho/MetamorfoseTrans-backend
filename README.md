@@ -12,7 +12,7 @@
 
 2 - Na pasta do projeto, dê um ```npm install```
 
-3 - Adicione seus arquivos .env na pasta raiz
+3 - Adicione seus arquivos .env na pasta raiz utilizando os env.example
 
 4 - Crie um banco de dados e rode o script do arquivo dump.sql
 
