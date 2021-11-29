@@ -1,5 +1,5 @@
 import { findSessionByToken } from '../repositories/user.repository.js';
-import * as tokenService from '../services/token.service';
+import * as tokenService from '../services/token.service.js';
 
 export default async function validateToken(req, res, next) {
   const { authorization } = req.headers;
