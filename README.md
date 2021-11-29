@@ -1,49 +1,35 @@
-# template-nodejs
+## Saiba mais sobre o aplicativo e seu uso acessando o [repositório do frontend](https://github.com/patricia270/MetamorfoseTrans-frontend)
 
-## Motivação
+## Requisitos para rodar a API
 
-Esse template diminui a burocracia de criar um server Node.js/Express, possuindo a maior parte das configurações inicias já feitas. O template segue os padrões de projetos da Driven Education.
+* npm
 
-## Dependencias
+* postigres
 
-### Produção
-- express
-- pg 
-- cors
-- dotenv
-- jest 
-- babel-jest
-- supertest
-- bcrypt
-- uuid
-- joi
+## Como usar a API?
 
-### Dev
-- eslint (airbnb base)
-- husky
-- nodemon
-- faker
+1 -  Dê um ```git clone``` neste repositório
 
-## Como usar?
+2 - Na pasta do projeto, dê um ```npm install```
 
-1- Crie um repositório utilizando esse template ao clicar no botão "use this template" acima. 
+3 - Adicione seus arquivos .env na pasta raiz
 
-2 -  Dê um ```git clone``` em seu repositorio
+4 - Crie um banco de dados e rode o script do arquivo dump.sql
 
-3 - Na pasta do projeto, dê um ```npm install```
+Há quatro scripts:
 
-4 - Adicione seus arquivos .env na pasta raiz
+para rodar a API em modo de <strong>produção</strong> use: (necessário ter um arquivo .env)
 
-5 - De um ```npx husky install```
+```npm run start```
 
-6 - Dẽ um ```npm start:dev```
+para rodar a API em modo de <strong>desenvolvimento</strong> use:(necessário ter um arquivo .env.dev)
 
-7- Opcionalmente, adicione os detalhes do seu projeto no package.json (nome, url, etc)
+```npm run start:dev```
 
-Há tres scripts iniciais:
+para <strong>testar</strong> as rotas da API: (necessário ter um arquivo .env.test)
 
-    "start": "NODE_ENV=prod node src/server.js",
-    "start:dev": "NODE_ENV=dev nodemon src/server.js",
-    "test": "NODE_ENV=test npx jest"
+```npm run test```
 
-### Fique a vontade para melhorar esse template ou me dar dicas de como fazer isso.
+para <strong>testar</strong> as rotas da API enquanto contribui no código: (necessário ter um arquivo .env.test)
+
+```npm run test:watch```
