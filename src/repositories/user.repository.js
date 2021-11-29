@@ -46,11 +46,36 @@ async function findSessionByUserId(userId) {
     return false;
   }
 }
+async function findSessionByToken(token){
+  try {
+		const result = await pool.query(
+			"SELECT * FROM sessions WHERE token = $1",
+			[token]
+		);
+		if (!result.rowCount) return null;
+    return result.rows[0];
+	} catch (error) {
+		console.log("FAIL in findSessionByToken", error.message);
+		return false;
+	}
+}
+async function deleteSessionByToken(token){
+  try {
+		await pool.query(
+			"DELETE FROM sessions WHERE token = $1",
+			[token]
+		);
+		return true;
+	} catch (error) {
+    console.log('Error at deleteSessionById', error.message);
+    return false;
+  }
+}
 async function deleteSessionById(id) {
   try {
     await pool.query(`DELETE FROM sessions WHERE id = $1;`, [id]);
   } catch (error) {
-    console.log('Error at deleteSession', error.message);
+    console.log('Error at deleteSessionById', error.message);
     return false;
   }
 }
@@ -73,6 +98,8 @@ export {
   find,
   findType,
   findSessionByUserId,
+  findSessionByToken,
   deleteSessionById,
   createSession,
+  deleteSessionByToken
 };

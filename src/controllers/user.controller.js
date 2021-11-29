@@ -1,8 +1,8 @@
 import * as userService from '../services/user.service.js';
+import * as userRepository from '../repositories/user.repository.js';
 
 async function signUp(req, res) {
   const userData = req.body;
-
   try {
     const result = await userService.create(userData);
 
@@ -32,4 +32,14 @@ async function signIn(req, res) {
   res.status(200).send({ token, userData });
 }
 
-export { signUp, signIn };
+async function logOut(req, res) {
+  const token = req.locals;
+
+  const result = await userRepository.deleteSessionByToken(token);
+
+  if (result) return res.sendStatus(200);
+
+  return res.sendStatus(500);
+}
+
+export { signUp, signIn, logOut };
