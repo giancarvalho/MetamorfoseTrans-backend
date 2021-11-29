@@ -36,7 +36,7 @@ async function validateSignIn(user) {
 async function validateUserCredentials({ email, password }) {
   const user = await userRepository.find(email);
 
-  if (bcrypt.compareSync(password, user.password) && !!user) return user;
+  if (!!user && bcrypt.compareSync(password, user.password)) return user;
   return false;
 }
 
