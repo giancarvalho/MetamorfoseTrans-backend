@@ -1,35 +1,37 @@
-## Saiba mais sobre o aplicativo e seu uso acessando o [repositório do frontend](https://github.com/patricia270/MetamorfoseTrans-frontend)
+## Learn more about the application and its use by visiting the [frontend repository](https://github.com/patricia270/MetamorfoseTrans-frontend)
 
-## Requisitos para rodar a API
+### [Versão em português]
+
+## Requeriments
 
 * npm
 
 * postigres
 
-## Como usar a API?
+## How to run?
 
-1 -  Dê um ```git clone``` neste repositório
+1 -  ```git clone``` this repository
 
-2 - Na pasta do projeto, dê um ```npm install```
+2 - In the project folder run ```npm install```
 
-3 - Adicione seus arquivos .env na pasta raiz utilizando os env.example
+3 - Add your .env files in root as env.example
 
-4 - Crie um banco de dados e rode o script do arquivo dump.sql
+4 - Build a database and run dump.sql scripts
 
-Há quatro scripts:
+There are four scripts:
 
-para rodar a API em modo de <strong>produção</strong> use: (necessário ter um arquivo .env)
+Run API in <strong>production</strong> mode: (.env needed)
 
 ```npm run start```
 
-para rodar a API em modo de <strong>desenvolvimento</strong> use:(necessário ter um arquivo .env.dev)
+Run API in <strong>development</strong> mode:(.env.dev needed)
 
 ```npm run start:dev```
 
-para <strong>testar</strong> as rotas da API: (necessário ter um arquivo .env.test)
+<strong>Test</strong> API routes running: (.env.test needed)
 
 ```npm run test```
 
-para <strong>testar</strong> as rotas da API enquanto contribui no código: (necessário ter um arquivo .env.test)
+<strong>Test</strong> API routes while coding: (.env.test needed)
 
 ```npm run test:watch```
