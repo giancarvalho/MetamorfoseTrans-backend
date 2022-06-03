@@ -6,7 +6,7 @@
 
 * npm
 
-* postigres
+* postgres
 
 ## How to run?
 

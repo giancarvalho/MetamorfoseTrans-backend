@@ -6,7 +6,7 @@
 
 * npm
 
-* postigres
+* postgres
 
 ## Como usar a API?
 
