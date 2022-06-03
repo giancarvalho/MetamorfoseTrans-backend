@@ -1,6 +1,6 @@
 ## Learn more about the application and its use by visiting the [frontend repository](https://github.com/patricia270/MetamorfoseTrans-frontend)
 
-### [Versão em português]
+### [Versão em português](./README-pt.md)
 
 ## Requeriments
 
